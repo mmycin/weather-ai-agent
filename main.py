@@ -7,13 +7,14 @@ def main() -> None:
     display("Location(Default-Dhaka): ", end="")
     location: str = input() or "Dhaka"
     result: Dict = asyncio.run(getweather(location.capitalize()))
+    clear()
     
     def mainloop() -> None:
         while True:
             display("You: ", end="")
             prompt: str = input()
             is_bye: bool = bool(int(isBye(prompt))) or False
-            if is_bye:
+            if is_bye or prompt.__contains__("bye"):
                 display("AI: ", "Bye. Have a nice day.")
                 break
             response: Final[str] = format(analyze(result, prompt))
