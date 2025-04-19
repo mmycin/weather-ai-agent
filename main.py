@@ -13,7 +13,7 @@ def main() -> None:
         while True:
             display("You: ", end="")
             prompt: str = input()
-            is_bye: bool = bool(int(isBye(prompt))) or False
+            is_bye: bool = isBye(prompt)
             if is_bye or prompt.__contains__("bye"):
                 display("AI: ", "Bye. Have a nice day.")
                 break

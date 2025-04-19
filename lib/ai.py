@@ -14,7 +14,12 @@ def analyze(api: Dict, prompt: str):
     ...
 
 @ai
-def isBye(text: str):
+def bye(text: str):
     """Check if the text "{{ text }}" indicates farewell (e.g., bye, goodbye, see you, that's all). 
     If yes, return 1. If not, return 0. Return ONLY the number with NO EXTRA TEXT."""
     ...
+    
+def isBye(text: str) -> bool:
+    response: str = bye(text)
+    output: bool = bool(int(response)) or False
+    return output

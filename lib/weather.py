@@ -7,7 +7,7 @@ import sys
 # Optional: Configure logging
 logging.basicConfig(level=logging.ERROR)
 
-async def getweather(location: str = "Dhaka") -> Dict:
+async def getweather(location: str) -> Dict:
     try:
         async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
             weather = await client.get(location)
