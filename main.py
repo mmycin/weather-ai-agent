@@ -6,7 +6,7 @@ from typing import Dict
 def main() -> None:
     display("Location(Default-Dhaka): ", end="")
     location: str = input() or "Dhaka"
-    result: Dict = asyncio.run(getweather(location))
+    result: Dict = asyncio.run(getweather(location.capitalize()))
     
     def mainloop() -> None:
         while True:
