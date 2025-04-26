@@ -20,7 +20,7 @@ async def getweather(location: str) -> Dict:
                 "country": weather.country,
                 "datetime": weather.datetime.isoformat(timespec="minutes"),
                 "description": weather.description,
-                "feels_like": weather.feels_like,
+                "feels_like": round(5 * (weather.feels_like - 32) / 9),
                 "humidity": weather.humidity,
                 "kind": weather.kind.name if weather.kind else "UNKNOWN",
                 "local_population": weather.local_population,
