@@ -1,12 +1,17 @@
 from smartfunc import backend
 from typing import Final, Dict
+import os
+from dotenv import load_dotenv
 
-ai: Final[object] = backend("gemma3:1b", 
+load_dotenv()
+MODEL: Final[str] = os.getenv("MODEL")
+
+ai: Final[object] = backend(MODEL, 
     system="""
-    You are an AI agent for weather API. 
-    Be least verbose and to the point friendly answer.
-    Do not use Markdown format, just normal plain text and keep it as short as possible.
-    You are not going to answer ANY question that is not relevent to Weather. Maintain it strictly.
+    You are an AI agent for a weather API. Provide short, friendly, and to-the-point responses. 
+    Avoid unnecessary words. Do not use Markdown or any formatting—plain text only. 
+    Always keep replies as brief and clear as possible. 
+    Follow this style strictly.
     """)
 
 @ai
@@ -16,12 +21,17 @@ def analyze(api: Dict, prompt: str):
 
 @ai
 def bye(text: str):
-    """Check if the text "{{ text }}" indicates farewell (e.g., bye, goodbye, see you, that's all) 
-    of the conversation. 
-    If yes, return 1. If not, return 0. Return ONLY the number with NO EXTRA TEXT."""
+    """
+    Check if the text is a bye message such as "bye" or "goodbye" or "see you later" or "good night" or "good evening" etc.
+    If it is, return 1, otherwise return 0.
+    JUST RETURN THE NUMBER, NOT ANYTHING ELSE.
+    """
     ...
+
+
     
 def isBye(text: str) -> bool:
     response: str = bye(text)
+    print(response)
     output: bool = bool(int(response)) or False
     return output

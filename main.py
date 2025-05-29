@@ -14,7 +14,7 @@ def main() -> None:
             display("You: ", end="")
             prompt: str = input()
             is_bye: bool = isBye(prompt)
-            if is_bye or prompt.__contains__("bye"):
+            if is_bye or "bye" in prompt.lower():
                 display("AI: ", "Bye. Have a nice day.")
                 break
             response: Final[str] = format(analyze(result, prompt))

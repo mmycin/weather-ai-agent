@@ -3,4 +3,6 @@ __pycache__
 dist
 build
 *.spec
-.exe
+*.exe
+.pytest_cache
+.env
