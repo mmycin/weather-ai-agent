@@ -32,6 +32,5 @@ def bye(text: str):
     
 def isBye(text: str) -> bool:
     response: str = bye(text)
-    print(response)
     output: bool = bool(int(response)) or False
     return output
